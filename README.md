@@ -1,4 +1,4 @@
-# ReactTrivia
+# Triviact
 
 Small Trivia game written in React just for study purposes. It uses the Open Trivia Database to fetch questions.
 
