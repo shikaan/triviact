@@ -1,0 +1,35 @@
+@import "../Shared/_constants.scss";
+
+.answer-questions {
+	background: lightskyblue;
+	color: white;
+	max-width: 360px;
+	width: 100%;
+	margin: auto;
+
+	.answer-questions__header {
+	    .answer-questions-header__title {
+	    	color: #fff;
+		    padding: .33em;
+		    background: teal;
+		    text-align: center;
+		    font-size: 1.67em;
+
+		    &.answer-questions-header__title--correct {
+		    	background: $success;
+		    }
+
+		    &.answer-questions-header__title--wrong {
+		    	background: $danger;
+		    }
+	    }
+
+	    .answer-questions-header__question {
+	    	padding: .33em;
+		    font-size: 1.33em;
+		    font-weight: 500;
+		    color: teal;
+		    font-style: italic;
+	    }
+	}
+}

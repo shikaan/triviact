@@ -1,0 +1,19 @@
+@import "_constants.scss";
+
+.flat-radio-container {
+
+	.flat-radio {
+		display: inline-block;
+	    width: 1em;
+	    height: 1em;
+	    background: white;
+	    margin: .33em;
+	    border-radius: 10em;
+	    vertical-align: middle;
+
+	    &.flat-radio--selected {
+	    	box-shadow: white 0px 0px 0px .16em inset;
+    		background: $primary;
+	    }
+	}
+}

@@ -1,0 +1,43 @@
+@import "_constants.scss";
+
+$transition-length: .5s;
+
+.flat-input{
+	padding: 0.3em;
+	display: flex;
+	flex-direction: column-reverse;
+
+	.flat-input__field {
+		background: transparent;
+		border: 0;
+		border-bottom: 0.15em solid $default;
+		transition: border $transition-length ease;
+		color: white;
+	
+		&:focus {
+			border-bottom: 0.15em solid $primary;
+			outline: none;
+		}
+
+		&:focus + .flat-input__label {
+			color: $primary;
+		}
+
+		&.flat-input__field--danger {
+			border-bottom: 0.15em solid $danger;
+
+			&:focus + .flat-input__label {
+				color: $danger;
+			}
+		}
+	}
+
+	.flat-input__label {
+		color: $default;
+	    text-transform: uppercase;
+	    font-family: sans-serif;
+	    font-weight: 500;
+	    font-size: 66.7%;
+	    transition: color $transition-length ease;
+	}
+}
