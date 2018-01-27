@@ -1,24 +1,25 @@
 const path = require('path');
-const {DefinePlugin} = require('webpack');
+const { DefinePlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ENVIRONMENT = process.env.NODE_ENV || "test";
+
+const ENVIRONMENT = process.env.NODE_ENV || 'test';
 
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './client/index.html',
   filename: 'index.html',
-  inject: 'body'
-})
+  inject: 'body',
+});
 
 const DefinePluginConfig = new DefinePlugin({
-  CONFIGURATION: JSON.stringify(require(path.join(__dirname, 'configuration', `${ENVIRONMENT}.json`))) 
-})
+  CONFIGURATION: JSON.stringify(require(path.join(__dirname, 'configuration', `${ENVIRONMENT}.json`))),
+});
 
 module.exports = {
-  entry: './client/index.js',
+  entry: './client/index.jsx',
   output: {
     path: path.resolve('dist'),
-    filename: 'index_bundle.js'
+    filename: 'index_bundle.js',
   },
   module: {
     loaders: [
@@ -27,13 +28,16 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', "sass-loader"]
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
-    ]
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
-  plugins: [HtmlWebpackPluginConfig, DefinePluginConfig]
-}
+  plugins: [HtmlWebpackPluginConfig, DefinePluginConfig],
+  resolve: {
+    extensions: ['.js', '.json', '.jsx'],
+  },
+};

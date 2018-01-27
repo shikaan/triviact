@@ -1,0 +1,17 @@
+const ACTIONS = {
+  FETCH_QUIZZES: 'FETCH_QUIZZES',
+  FETCH_QUIZZES_SUCCESS: 'FETCH_QUIZZES_SUCCESS',
+  FETCH_QUIZZES_ERROR: 'FETCH_QUIZZES_ERROR',
+  SET_CORRECT_ANSWERS: 'SET_CORRECT_ANSWERS',
+  SET_DIFFICULTY: 'SET_DIFFICULTY',
+};
+
+const INITIAL_STATE = {
+  quizzes: [],
+  correctAnswers: 0,
+  error: null,
+  isLoading: false,
+  difficulty: 'easy',
+};
+
+export { ACTIONS, INITIAL_STATE };

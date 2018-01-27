@@ -4,8 +4,8 @@
   "description": "Deadly simple Trivia application in React",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=test webpack-dev-server",
-    "build": "NODE_ENV=prod webpack"
+    "start": "set NODE_ENV=test& webpack-dev-server",
+    "build": "set NODE_ENV=prod& webpack"
   },
   "author": "Manuel \"Shikaan\" Spagnolo <spagnolo.manu@gmail.com>",
   "license": "ISC",
@@ -20,7 +20,12 @@
     "normalize.css": "^7.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-router-dom": "^4.1.2",
+    "react-redux": "4.3.0",
+    "react-router": "^2.0.1",
+    "react-router-dom": "^4.0.0",
+    "redux": "^3.7.2",
+    "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.4",
