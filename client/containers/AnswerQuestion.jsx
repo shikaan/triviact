@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AnswerQuestion from '../components/AnswerQuestion';
-import { addCorrectAnswer, setActiveAnswer, setActiveQuiz, setConfirm } from '../store/actions';
+import { addCorrectAnswer, navigateTo, setActiveAnswer, setActiveQuiz, setConfirm } from '../store/actions';
 
 class AnswerQuestionContainer extends React.Component {
   componentWillMount() {
@@ -13,11 +13,11 @@ class AnswerQuestionContainer extends React.Component {
       setActiveQuiz,
       activeQuiz,
       quizzes,
-      history,
+      navigateTo,
     } = this.props;
 
     if (activeQuiz.index === quizzes.length) {
-      history.push('/results');
+      navigateTo('/results');
     } else {
       setActiveQuiz(activeQuiz.index + 1);
     }
@@ -48,6 +48,12 @@ function mapStateToProps({ quizzes, activeAnswer, activeQuiz, confirmed }) {
   };
 }
 
-const mapDispatchToProps = { addCorrectAnswer, setActiveQuiz, setActiveAnswer, setConfirm };
+const mapDispatchToProps = {
+  addCorrectAnswer,
+  setActiveQuiz,
+  setActiveAnswer,
+  setConfirm,
+  navigateTo,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(AnswerQuestionContainer);

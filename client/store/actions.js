@@ -5,9 +5,8 @@ import { Configuration } from '../configuration';
 const apiUrl = Configuration.apiUrl;
 
 function navigateTo(path) {
-  return (dispatch) => {
-    dispatch(push(path));
-  };
+  // This method is already returning an action!
+  return push(path);
 }
 
 function fetchQuizzesError(payload) {
