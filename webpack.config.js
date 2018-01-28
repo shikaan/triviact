@@ -18,7 +18,7 @@ const DefinePluginConfig = new DefinePlugin({
 module.exports = {
   entry: './client/index.jsx',
   output: {
-    path: path.resolve('dist'),
+    path: path.resolve('docs'),
     filename: 'index_bundle.js',
   },
   module: {
