@@ -6,7 +6,6 @@ import { navigateTo } from '../store/actions';
 const ResultsContainer = props => <Results {...props} />;
 
 function mapStateToProps({ correctAnswers, quizzes }) {
-  debugger;
   return {
     correctAnswers,
     quizzes,

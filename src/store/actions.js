@@ -1,8 +1,7 @@
 import { push } from 'react-router-redux';
 import { ACTIONS } from './constants';
-import { Configuration } from '../configuration';
 
-const apiUrl = Configuration.apiUrl;
+const apiUrl = 'https://opentdb.com/api.php';
 
 function navigateTo(path) {
   // This method is already returning an action!

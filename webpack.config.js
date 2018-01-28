@@ -1,25 +1,17 @@
 const path = require('path');
-const { DefinePlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const ENVIRONMENT = process.env.NODE_ENV || 'test';
-
-
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: './client/index.html',
+  template: './src/index.html',
   filename: 'index.html',
   inject: 'body',
 });
 
-const DefinePluginConfig = new DefinePlugin({
-  CONFIGURATION: JSON.stringify(require(path.join(__dirname, 'configuration', `${ENVIRONMENT}.json`))),
-});
-
 module.exports = {
-  entry: './client/index.jsx',
+  entry: './src/index.jsx',
   output: {
-    path: path.resolve('docs'),
-    filename: 'index_bundle.js',
+    path: path.resolve('triviact'),
+    filename: 'bundle.js',
   },
   module: {
     loaders: [
@@ -36,7 +28,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [HtmlWebpackPluginConfig, DefinePluginConfig],
+  plugins: [HtmlWebpackPluginConfig],
   resolve: {
     extensions: ['.js', '.json', '.jsx'],
   },

@@ -4,10 +4,12 @@
   "description": "Deadly simple Trivia application in React",
   "main": "index.js",
   "scripts": {
-    "start": "set NODE_ENV=test& webpack-dev-server",
-    "build": "set NODE_ENV=prod& webpack"
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
-  "author": "Manuel \"Shikaan\" Spagnolo <spagnolo.manu@gmail.com>",
+  "author": "Manuel Spagnolo <spagnolo.manu@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "classname": "0.0.0",
@@ -42,6 +44,7 @@
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.3.0"
+    "eslint-plugin-react": "^7.3.0",
+    "gh-pages": "^1.1.0"
   }
 }
