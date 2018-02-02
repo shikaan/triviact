@@ -1,27 +1,36 @@
 import React from 'react';
 import classname from 'classname';
-
-import './AnswerQuestion.scss';
+import { Container, Grid, Header, Icon, List } from 'semantic-ui-react';
 
 import Button from '../Shared/Button';
 import Radio from '../Shared/Radio';
-
-const headerBaseClass = 'answer-questions-header__title';
+import './AnswerQuestion.scss';
+import FourOhFour from '../../containers/FourOhFour';
 
 export default class AnswerQuestion extends React.Component {
   renderOptions() {
-    const { activeQuiz, activeAnswer, setActiveAnswer } = this.props;
+    const { activeQuiz, activeAnswer, setActiveAnswer, confirmed } = this.props;
 
-    return activeQuiz.answers.map(answer =>
-      (<div key={answer.index}>
-        <Radio
-          name={activeQuiz.index}
-          checked={!!activeAnswer && activeAnswer.index === answer.index}
-          onChange={() => setActiveAnswer(answer.index)}
-          value={answer.index}
-          label={answer.text}
-        />
-      </div>));
+    return activeQuiz.answers.map((answer) => {
+      const className = classname('answer', {
+        'answer--correct': confirmed && answer.correct,
+        'answer--wrong': confirmed && !answer.correct,
+      });
+
+      return (<List.Item key={answer.index}>
+        <List.Content className={className}>
+          <Radio
+            name={`quiz${activeQuiz.index}`}
+            checked={!!activeAnswer && activeAnswer.index === answer.index}
+            onChange={() => setActiveAnswer(answer.index)}
+            readOnly={confirmed}
+            value={answer.index}
+            label={answer.text}
+          />
+        </List.Content>
+      </List.Item>
+      );
+    });
   }
   render() {
     const {
@@ -32,36 +41,51 @@ export default class AnswerQuestion extends React.Component {
       confirm,
     } = this.props;
 
-    const headerClass = classname(headerBaseClass, {
-      [`${headerBaseClass}--correct`]: confirmed && activeAnswer && activeAnswer.correct,
-      [`${headerBaseClass}--wrong`]: confirmed && activeAnswer && !activeAnswer.correct,
-    });
-
     if (!activeQuiz) {
-      return <h2>Nothing to render</h2>;
+      return <FourOhFour />;
     }
 
+    const isCorrect = confirmed && activeAnswer && activeAnswer.correct;
+    const isWrong = confirmed && activeAnswer && !activeAnswer.correct;
+
+    const color = isCorrect ? 'green' : isWrong ? 'red' : null;
+
     return (
-      <section className="answer-questions">
-        <header className="answer-questions__header">
-          <h1 className={headerClass}>
-            Question #{activeQuiz.index}
-          </h1>
-          <h2 className="answer-questions-header__question">
-            {activeQuiz.question}
-          </h2>
-        </header>
-        <main>
-          { activeQuiz ? this.renderOptions() : 'Nothing to render'}
-        </main>
-        <footer className="answer-questions__footer">
-          <Button
-            disabled={activeAnswer === null}
-            label={confirmed ? 'Next' : 'Confirm'}
-            callback={confirmed ? next : confirm}
-          />
-        </footer>
-      </section>
+      <div>
+        <Grid celled="internally">
+          <Grid.Row>
+            <Grid.Column width={16}>
+              <Header as="h2" textAlign="center" color={color}>
+                <Icon name={(isCorrect && 'checkmark') || (isWrong && 'remove') || 'help'} color={color} />
+                <Header.Content>
+                  Question #{activeQuiz.index}
+                  <Header.Subheader>
+                    {activeQuiz.question}
+                  </Header.Subheader>
+                </Header.Content>
+              </Header>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={16}>
+              <List>
+                { activeQuiz ? this.renderOptions() : 'Nothing to render'}
+              </List>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={16}>
+              <Container>
+                <Button
+                  disabled={activeAnswer === null}
+                  label={confirmed ? 'Next' : 'Confirm'}
+                  callback={confirmed ? next : confirm}
+                />
+              </Container>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </div>
     );
   }
 }

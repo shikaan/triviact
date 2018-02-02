@@ -1,4 +1,4 @@
-import 'normalize.css';
+import 'semantic-ui-css/semantic.min.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -10,8 +10,6 @@ import Results from './containers/Results';
 import AnswerQuestion from './containers/AnswerQuestion';
 import FetchQuizzes from './containers/FetchQuizzes';
 import FourOhFour from './components/FourOhFour';
-
-import './index.scss';
 
 ReactDOM.render(
   <Provider store={store}>

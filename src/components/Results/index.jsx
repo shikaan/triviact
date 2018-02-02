@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './Results.scss';
 import Button from '../Shared/Button';
 
 export default (props) => {

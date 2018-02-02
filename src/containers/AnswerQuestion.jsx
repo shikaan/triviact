@@ -13,7 +13,6 @@ class AnswerQuestionContainer extends React.Component {
       setActiveQuiz,
       activeQuiz,
       quizzes,
-      navigateTo,
     } = this.props;
 
     if (activeQuiz.index === quizzes.length) {
