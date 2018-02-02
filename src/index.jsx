@@ -9,7 +9,7 @@ import store, { history } from './store';
 import Results from './containers/Results';
 import AnswerQuestion from './containers/AnswerQuestion';
 import FetchQuizzes from './containers/FetchQuizzes';
-import FourOhFour from './components/FourOhFour';
+import FourOhFour from './containers/FourOhFour';
 
 ReactDOM.render(
   <Provider store={store}>

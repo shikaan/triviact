@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Grid, Header } from 'semantic-ui-react';
-import Button from '../Shared/Button';
+import Button from '../Shared/Button'
 
 const FourOhFour = ({ navigateTo }) =>
   (<Grid celled="internally" textAlign="center">

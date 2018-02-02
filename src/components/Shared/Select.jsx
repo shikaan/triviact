@@ -1,11 +1,7 @@
 import React from 'react';
-import { Dropdown } from 'semantic-ui-react';
+import { Dropdown, Header } from 'semantic-ui-react';
 
 export default class Select extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {
       label,
@@ -14,13 +10,16 @@ export default class Select extends React.Component {
     } = this.props;
 
     return (
-      <Dropdown
-        placeholder={label}
-        fluid
-        selection
-        onChange={callback}
-        options={options}
-      />
+      <div>
+        <Header as="h4">{label}</Header>
+        <Dropdown
+          fluid
+          selection
+          onChange={callback}
+          options={options}
+          defaultValue={options[0].value}
+        />
+      </div>
     );
   }
 }

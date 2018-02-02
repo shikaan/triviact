@@ -1,7 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AnswerQuestion from '../components/AnswerQuestion';
-import { addCorrectAnswer, navigateTo, setActiveAnswer, setActiveQuiz, setConfirm } from '../store/actions';
+import {
+  addCorrectAnswer,
+  navigateTo,
+  setActiveAnswer,
+  setActiveQuiz,
+  setConfirm,
+} from '../store/actions';
 
 class AnswerQuestionContainer extends React.Component {
   componentWillMount() {
@@ -9,28 +15,16 @@ class AnswerQuestionContainer extends React.Component {
   }
 
   next() {
-    const {
-      setActiveQuiz,
-      activeQuiz,
-      quizzes,
-    } = this.props;
-
-    if (activeQuiz.index === quizzes.length) {
-      navigateTo('/results');
+    if (this.props.activeQuiz.index === this.props.quizzes.length) {
+      this.props.navigateTo('/results');
     } else {
-      setActiveQuiz(activeQuiz.index + 1);
+      this.props.setActiveQuiz(this.props.activeQuiz.index + 1);
     }
   }
 
   confirm() {
-    const {
-      activeAnswer,
-      addCorrectAnswer,
-      setConfirm,
-    } = this.props;
-
-    if (activeAnswer.correct) addCorrectAnswer();
-    setConfirm(true);
+    if (this.props.activeAnswer.correct) this.props.addCorrectAnswer();
+    this.props.setConfirm(true);
   }
 
   render() {

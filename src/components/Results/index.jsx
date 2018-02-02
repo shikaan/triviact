@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Grid, Header, Progress } from 'semantic-ui-react';
 
 import Button from '../Shared/Button';
 
@@ -10,23 +11,27 @@ export default (props) => {
   } = props;
 
   return (
-    <section className="results">
-      <header className="results__header">
-        <h1>
+    <Grid celled="internally" textAlign="center">
+      <Grid.Row>
+        <Grid.Column width={16}>
+          <Header as="h2" textAlign="center">
             Finished
-        </h1>
-      </header>
-      <main className="results__body">
-        <p>
-            You answered correctly
-        </p>
-        <h1>
-          {correctAnswers}/{quizzes ? quizzes.length : 0}
-        </h1>
-      </main>
-      <footer>
-        <Button label="Restart" callback={() => navigateTo('/')} />
-      </footer>
-    </section>
+          </Header>
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column width={16}>
+          You answered correctly
+          <Progress value={correctAnswers} total={quizzes.length} progress="ratio" />
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column width={16}>
+          <Container>
+            <Button label="Restart" callback={() => navigateTo('/home')} />
+          </Container>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   );
 };
